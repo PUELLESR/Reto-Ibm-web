@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>REST test</title>
+</head>
+<body>
+    <h1>Prueba de consumo de Servicio Rest</h1>
+    <p>Ingresa valor 1:</p>
+    <input type="text" id="val1">
+
+    <p>Ingresa valor 2:</p>
+    <input type="text" id="val2">
+
+    <button onclick="pruebaServicio()">Probar</button>
+    <br>
+
+    <p>RESULTADO:</p>
+    <h3 id="temporal"></h3>
+<script>
+function pruebaServicio(){
+    var val1 = document.getElementById('val1').value;
+    var val2 = document.getElementById('val2').value;
+    fetch('http://35.162.205.132:4000/retoibm/sumar/' + val1 + '/' + val2)
+    .then((response) => {
+        return response.json();
+    })
+    .then((json) => {
+        console.log(json);
+        let temporal = document.getElementById('temporal');
+        temporal.innerHTML = json['resultado'];
+    });
+}
+</script>
+</body>
+</html>
