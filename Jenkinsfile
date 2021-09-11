@@ -51,6 +51,7 @@ pipeline {
             }
         }
 }
+}
 
 def getEnvironment() {
     return (isDevelop())?'dev':(isRelease()?'qas':(isMaster())?'prd':'qas')
@@ -78,4 +79,4 @@ def getShortCommitId() {
     return shortGitCommit
 }
 
-}
+
