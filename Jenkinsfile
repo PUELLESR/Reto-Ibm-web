@@ -17,9 +17,9 @@ pipeline {
     agent any 
 
     environment {
-        IMAGE_NAME = 'AQUI VA EL REPOSITORIO DE ECR'
+        IMAGE_NAME = 'ibm/web'
         AWS_REGION = 'us-west-2'
-        AWS_ACCOUNT = 'AQUI VA LA CUENTA AWS'
+        AWS_ACCOUNT = '987038959406'
         IMAGE_TAG = getShortCommitId()
         ENVIRONMENT = getEnvironment()
     }
