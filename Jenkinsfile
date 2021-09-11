@@ -53,15 +53,23 @@ pipeline {
 }
 
 def getEnvironment() {
-    return ((isMaster())?'prd')
+    return (isDevelop())?'dev':(isRelease()?'qas':(isMaster())?'prd':'qas')
 }
 
 def getFixedImageTag() {
-    return (isMaster())?'prd')
+    return (isDevelop())?'dev':(isRelease()?'qas':(isMaster())?'latest':'qas')
 }
 
 def isMaster() {
     return env.BRANCH_NAME == "master"
+}
+
+def isRelease() {
+    return env.BRANCH_NAME == "release"
+}
+
+def isDevelop() {
+    return env.BRANCH_NAME == "develop"
 }
 
 def getShortCommitId() {
